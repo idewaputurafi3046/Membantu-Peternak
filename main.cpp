@@ -352,6 +352,7 @@ void displayMe(void) //yang akan ditampilkan
               glVertex2f(x/50,y/100);
        }
     glEnd();
+
     glBegin(GL_POLYGON); //awal serigala kaki kanan depan
     glColor3f(0, 0, 0);
     glVertex2f(70.67,19.68);
@@ -498,12 +499,13 @@ void displayMe(void) //yang akan ditampilkan
 	glutSwapBuffers();
 }
 
+
 int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE); //atur display
 	glutInitWindowSize(1000, 700); //ukurann display
-	glutInitWindowPosition(0,0); //posisi display
+	glutInitWindowPosition(180,0); //posisi display
 	glutCreateWindow("Tugas"); //membuat window
 	glutDisplayFunc(displayMe); //memanggil display
 	glClearColor(0,0,1,1);
