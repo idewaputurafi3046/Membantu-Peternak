@@ -149,7 +149,7 @@ void displayMe(void) //yang akan ditampilkan
     glEnd();
 
     glBegin(GL_QUADS); //batang pohon
-    glColor3f(1, 1, 1);
+    glColor3f(0.5, 0, 0);
     glVertex2f(84,22);
     glVertex2f(90,22);
     glVertex2f(90,32);
@@ -179,32 +179,32 @@ void displayMe(void) //yang akan ditampilkan
 
     glBegin(GL_QUADS); //kaki domba
     glColor3f(0, 0, 0);
-    glVertex2f(19,18.3);
-    glVertex2f(18.5,18.3);
+    glVertex2f(19,18);
+    glVertex2f(18.5,18);
     glVertex2f(18.5,20);
     glVertex2f(19,20);
     glEnd();
 
     glBegin(GL_QUADS); //kaki domba
     glColor3f(0, 0, 0);
-    glVertex2f(18.2,18.3);
-    glVertex2f(17.7,18.3);
+    glVertex2f(18.2,18);
+    glVertex2f(17.7,18);
     glVertex2f(17.7,20);
     glVertex2f(18.2,20);
     glEnd();
 
     glBegin(GL_QUADS); //kaki domba
     glColor3f(0, 0, 0);
-    glVertex2f(15,18.3);
-    glVertex2f(15.5,18.3);
+    glVertex2f(15,18);
+    glVertex2f(15.5,18);
     glVertex2f(15.5,20);
     glVertex2f(15,20);
     glEnd();
 
     glBegin(GL_QUADS); //kaki domba
     glColor3f(0, 0, 0);
-    glVertex2f(14.7,18.3);
-    glVertex2f(14.2,18.3);
+    glVertex2f(14.7,18);
+    glVertex2f(14.2,18);
     glVertex2f(14.2,20);
     glVertex2f(14.7,20);
     glEnd();
@@ -352,6 +352,44 @@ void displayMe(void) //yang akan ditampilkan
               glVertex2f(x/50,y/100);
        }
     glEnd();
+
+    glBegin(GL_POLYGON); //rumput
+    glColor3f(0,1,0);//untuk warna rumput
+    glVertex2f(92,24);
+    glVertex2f(96,24);
+    glVertex2f(96,26);
+    glVertex2f(92,26);
+    glEnd();
+
+    glBegin(GL_LINES); //tali rumput
+    glColor3f(1,1,1);//untuk warna tali rumput
+    glVertex2f(93,24);
+    glVertex2f(93,26);
+
+    glVertex2f(94,24);
+    glVertex2f(94,26);
+
+    glVertex2f(95,24);
+    glVertex2f(95,26);
+
+    glVertex2f(92,25);
+    glVertex2f(96,25);
+    glEnd();
+
+    glBegin(GL_QUADS); //kotak
+    glColor3f(0.5,0,0);//untuk warna kotak
+    glVertex2f(91.5,22);
+    glVertex2f(96.5,22);
+    glVertex2f(96.5,24.5);
+    glVertex2f(91.5,24.5);
+
+    glColor3f(0.5,0.5,0.5);//untuk warna kotak
+    glVertex2f(91.5,23.5);
+    glVertex2f(96.5,23.5);
+    glVertex2f(96.5,24);
+    glVertex2f(91.5,24);
+    glEnd();
+
     glBegin(GL_POLYGON); //awal serigala kaki kanan depan
     glColor3f(0, 0, 0);
     glVertex2f(70.67,19.68);
@@ -495,15 +533,18 @@ void displayMe(void) //yang akan ditampilkan
     glVertex2f(66.64,24.07);
     glEnd();
 
+
+
 	glutSwapBuffers();
 }
+
 
 int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE); //atur display
 	glutInitWindowSize(1000, 700); //ukurann display
-	glutInitWindowPosition(0,0); //posisi display
+	glutInitWindowPosition(180,0); //posisi display
 	glutCreateWindow("Tugas"); //membuat window
 	glutDisplayFunc(displayMe); //memanggil display
 	glClearColor(0,0,1,1);
