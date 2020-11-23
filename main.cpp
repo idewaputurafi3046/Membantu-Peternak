@@ -66,19 +66,19 @@ void displayMe(void) //yang akan ditampilkan
     glVertex2f(64,20);
     glVertex2f(66,20);
 
+    glVertex2f(64,19);
+    glVertex2f(66,19);
+
     glVertex2f(64,21);
     glVertex2f(66,21);
-
-    glVertex2f(64,22);
-    glVertex2f(66,22);
     glEnd();
 
     glBegin(GL_QUADS); //pijakan jembatan
     glColor3f(0.5, 0, 0);
-    glVertex2f(22,20);
-    glVertex2f(64,20);
-    glVertex2f(64,22);
-    glVertex2f(22,22);
+    glVertex2f(22,19);
+    glVertex2f(64,19);
+    glVertex2f(64,21);
+    glVertex2f(22,21);
     glEnd();
 
     glBegin(GL_QUADS); //penyanggah jembatan kiri
@@ -89,16 +89,16 @@ void displayMe(void) //yang akan ditampilkan
     glVertex2f(20,26);
     glEnd();
 
-    glBegin(GL_LINES); //tali jembatan kiri
+     glBegin(GL_LINES); //tali jembatan kiri
     glColor3f(1, 1, 1);
     glVertex2f(20,20);
     glVertex2f(22,20);
 
+    glVertex2f(20,19);
+    glVertex2f(22,19);
+
     glVertex2f(20,21);
     glVertex2f(22,21);
-
-    glVertex2f(20,22);
-    glVertex2f(22,22);
     glEnd();
 
     glBegin(GL_POLYGON); //ombak 1 kiri
@@ -533,9 +533,141 @@ void displayMe(void) //yang akan ditampilkan
     glVertex2f(66.64,24.07);
     glEnd();
 
+    glBegin(GL_POLYGON); //Sepatu
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(54,21);
+    glVertex2f(57,21);
+    glVertex2f(57,22);
+    glVertex2f(55,22);
+    glEnd();
 
+    glBegin(GL_POLYGON); // sepatu belakang
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(58,21);
+    glVertex2f(59,22);
+    glVertex2f(61,22);
+    glVertex2f(61,21);
+    glEnd();
+
+    glBegin(GL_POLYGON); //Celana
+    glColor3f(0,0,0);
+    glVertex2f(57,22);
+    glVertex2f(56,25);
+    glVertex2f(57,25);
+    glVertex2f(59,22);
+    glVertex2f(61,22);
+    glVertex2f(59,25);
+    glVertex2f(60,27);
+    glVertex2f(55,27);
+    glVertex2f(54,25);
+    glVertex2f(55,22);
+    glEnd();
+
+    glBegin(GL_POLYGON); //Tangan
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(52,29);
+    glVertex2f(51.5,29.5);
+    glVertex2f(51,29);
+    glVertex2f(50.5,29);
+    glVertex2f(50,28.5);
+    glVertex2f(50,28);
+    glVertex2f(50.5,27.5);
+    glVertex2f(51,27.5);
+    glVertex2f(51.5,28);
+    glVertex2f(51.5,28.5);
+    glEnd();
+
+    glBegin(GL_POLYGON); //Saku
+    glColor3f(1,1,1);
+    glVertex2f(54.5,26);
+    glVertex2f(55,26);
+    glVertex2f(56,27);
+    glVertex2f(55,27);
+    glEnd();
+
+    glBegin(GL_POLYGON); //Baju
+    glColor3f(0.5, 0, 0);
+    glVertex2f(55,27);
+    glVertex2f(60,27);
+    glVertex2f(59,32);
+    glVertex2f(56,32);
+    glEnd();
+
+    glBegin(GL_POLYGON); // Lengan
+    glColor3f(0.5, 0, 0);
+    glVertex2f(56,32);
+    glVertex2f(56,31);
+    glVertex2f(52,28.5);
+    glVertex2f(51,29.5);
+    glEnd();
+
+    glBegin(GL_POLYGON); // Kera
+    glColor3f(0,0,0);
+    glVertex2f(59,32);
+    glVertex2f(59,33);
+    glVertex2f(56.5,33);
+    glVertex2f(56,32);
+    glEnd();
+
+    glBegin(GL_POLYGON); // Kepala
+    glColor3f(0.5, 1, 1);
+    glVertex2f(58.5,33);
+    glVertex2f(58.5,33.5);
+    glVertex2f(59.5,34);
+    glVertex2f(60,35);
+    glVertex2f(60,36);
+    glVertex2f(59.5,37);
+    glVertex2f(59,37.5);
+    glVertex2f(56.5,37.5);
+    glVertex2f(56,37);
+    glVertex2f(55.5,36);
+    glVertex2f(55.5,35);
+    glVertex2f(56,34);
+    glVertex2f(57,33.5);
+    glVertex2f(57,33);
+    glEnd();
+
+    glBegin(GL_POLYGON); // Topi
+    glColor3f(0.5, 1, 0);
+    glVertex2f(61,37.5);
+    glVertex2f(57.5,39.5);
+    glVertex2f(54,37.5);
+    glEnd();
+
+    glBegin(GL_POLYGON); // Mata
+    glColor3f(1, 1, 1);
+    glVertex2f(56.5,37);
+    glVertex2f(57,37);
+    glVertex2f(57.5,36.5);
+    glVertex2f(57.5,36);
+    glVertex2f(57,35.5);
+    glVertex2f(56.5,35.5);
+    glVertex2f(56,36);
+    glVertex2f(56,36.5);
+    glEnd();
+
+    glBegin(GL_POLYGON); // Bola Mata
+    glColor3f(0, 0, 0);
+    glVertex2f(57,36);
+    glVertex2f(57,36.5);
+    glVertex2f(56.5,36.5);
+    glVertex2f(56.5,36);
+    glEnd();
+
+    glBegin(GL_POLYGON); // Mulut
+    glColor3f(0, 0, 0);
+    glVertex2f(55.5,35);
+    glVertex2f(57,35);
+    glVertex2f(56,34);
+    glEnd();
 
 	glutSwapBuffers();
+}
+void utama()
+{
+    displayMe();
+
+
 }
 
 
@@ -546,7 +678,7 @@ int main(int argc, char** argv)
 	glutInitWindowSize(1000, 700); //ukurann display
 	glutInitWindowPosition(180,0); //posisi display
 	glutCreateWindow("Tugas"); //membuat window
-	glutDisplayFunc(displayMe); //memanggil display
+	glutDisplayFunc(utama); //memanggil display
 	glClearColor(0,0,1,1);
 	gluOrtho2D(0, 100, 0, 50); //mengatur proyeksi hasil eksekusi
 	glutMainLoop();
