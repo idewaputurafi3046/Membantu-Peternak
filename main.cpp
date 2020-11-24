@@ -11,11 +11,11 @@ void displayMe(void) //yang akan ditampilkan
 
     glBegin(GL_POLYGON); //tanah kiri 1
     glColor3f(1, 1, 0);
-    glVertex2f(0,0);
+    glVertex2f(-10,0);
     glVertex2f(8,0);
     glVertex2f(8,18);
     glVertex2f(4,22);
-    glVertex2f(0,22);
+    glVertex2f(-10,22);
     glEnd();
 
     glBegin(GL_POLYGON); //tanah kiri 2
@@ -610,7 +610,7 @@ void displayMe(void) //yang akan ditampilkan
     glEnd();
 
     glBegin(GL_POLYGON); // Kepala
-    glColor3f(0.5, 1, 1);
+    glColor3f(0.5, 0.5, 0.5);
     glVertex2f(58.5,33);
     glVertex2f(58.5,33.5);
     glVertex2f(59.5,34);
@@ -680,7 +680,7 @@ int main(int argc, char** argv)
 	glutCreateWindow("Tugas"); //membuat window
 	glutDisplayFunc(utama); //memanggil display
 	glClearColor(0,0,1,1);
-	gluOrtho2D(0, 100, 0, 50); //mengatur proyeksi hasil eksekusi
+	gluOrtho2D(-10, 100, 0, 50); //mengatur proyeksi hasil eksekusi
 	glutMainLoop();
 	return 0;
 }
