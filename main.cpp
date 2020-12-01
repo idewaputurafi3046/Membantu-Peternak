@@ -5,9 +5,8 @@
 const double PI = 3.142857143;
 int i,radius,jumlah_titik,x_tengah,y_tengah;
 
-void displayMe(void) //yang akan ditampilkan
+void latar(void) //yang akan ditampilkan
 {
-    glClear(GL_COLOR_BUFFER_BIT); //membersihkan frame
 
     glBegin(GL_POLYGON); //tanah kiri 1
     glColor3f(1, 1, 0);
@@ -176,7 +175,9 @@ void displayMe(void) //yang akan ditampilkan
     glVertex2f(96,40);
     glVertex2f(87,48);
     glEnd();
-
+}
+void domba(void)
+{
     glBegin(GL_QUADS); //kaki domba
     glColor3f(0, 0, 0);
     glVertex2f(19,18);
@@ -352,7 +353,9 @@ void displayMe(void) //yang akan ditampilkan
               glVertex2f(x/50,y/100);
        }
     glEnd();
-
+}
+void rumput(void)
+{
     glBegin(GL_POLYGON); //rumput
     glColor3f(0,1,0);//untuk warna rumput
     glVertex2f(92,24);
@@ -389,7 +392,9 @@ void displayMe(void) //yang akan ditampilkan
     glVertex2f(96.5,24);
     glVertex2f(91.5,24);
     glEnd();
-
+}
+void serigala(void)
+{
     glBegin(GL_POLYGON); //awal serigala kaki kanan depan
     glColor3f(0, 0, 0);
     glVertex2f(70.67,19.68);
@@ -532,7 +537,9 @@ void displayMe(void) //yang akan ditampilkan
     glVertex2f(67.9,24.62);
     glVertex2f(66.64,24.07);
     glEnd();
-
+}
+void petani(void)
+{
     glBegin(GL_POLYGON); //Sepatu
     glColor3f(0.5, 0.5, 0.5);
     glVertex2f(54,21);
@@ -660,17 +667,53 @@ void displayMe(void) //yang akan ditampilkan
     glVertex2f(57,35);
     glVertex2f(56,34);
     glEnd();
+}
+void tombol(void)
+{
+    glBegin(GL_QUADS);
+    glColor3f(0, 0, 0);
+    glVertex2f(22,2);
+    glVertex2f(64,2);
+    glVertex2f(64,8);
+    glVertex2f(22,8);
 
-	glutSwapBuffers();
+    glColor3f(0.5, 0, 0);
+    glVertex2f(23,3);
+    glVertex2f(33,3);
+    glVertex2f(33,7);
+    glVertex2f(23,7);
+
+    glColor3f(1, 1, 1);
+    glVertex2f(35,3);
+    glVertex2f(43,3);
+    glVertex2f(43,7);
+    glVertex2f(35,7);
+
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(45,3);
+    glVertex2f(53,3);
+    glVertex2f(53,7);
+    glVertex2f(45,7);
+
+    glColor3f(0, 1, 0);
+    glVertex2f(55,3);
+    glVertex2f(63,3);
+    glVertex2f(63,7);
+    glVertex2f(55,7);
+    glEnd();
+
 }
 void utama()
 {
-    displayMe();
-
-
+    glClear(GL_COLOR_BUFFER_BIT);
+    latar();
+    domba();
+    rumput();
+    serigala();
+    petani();
+    tombol();
+    glutSwapBuffers();
 }
-
-
 int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
