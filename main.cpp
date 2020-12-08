@@ -2,9 +2,11 @@
 #include <GL/glu.h> //Import library yang akan digunakan
 #include <GL/glut.h> //Import library yang akan digunakan
 #include <math.h> //import rumus matematika
+#include <stdio.h>
+#include <stdlib.h>
 const double PI = 3.142857143;
-int i,radius,jumlah_titik,x_tengah,y_tengah;
-
+int i,radius,jumlah_titik,a_tengah,b_tengah;
+float x,y,z;
 void latar(void) //yang akan ditampilkan
 {
 
@@ -214,15 +216,15 @@ void domba(void)
     glColor3f(1,1,1);//untuk warna domba
        radius = 250;
        jumlah_titik = 60;
-       x_tengah = 800;
-       y_tengah = 2200;
+       a_tengah = 800;
+       b_tengah = 2200;
 
        for (i=0;i<=360;i++)
        {
               float sudut=i*(2*PI/jumlah_titik);
-              float x=x_tengah+radius*cos (sudut);
-              float y=y_tengah+radius*sin (sudut);
-              glVertex2f(x/50,y/100);
+              float a=a_tengah+radius*cos (sudut);
+              float b=b_tengah+radius*sin (sudut);
+              glVertex2f(a/50,b/100);
        }
     glEnd();
 
@@ -230,15 +232,15 @@ void domba(void)
     glColor3f(0,0,0);
        radius = 140;
        jumlah_titik = 60;
-       x_tengah = 850;
-       y_tengah = 2000;
+       a_tengah = 850;
+       b_tengah = 2000;
 
        for (i=0;i<=360;i++)
        {
               float sudut=i*(2*PI/jumlah_titik);
-              float x=x_tengah+radius*cos (sudut);
-              float y=y_tengah+radius*sin (sudut);
-              glVertex2f(x/80,y/90);
+              float a=a_tengah+radius*cos (sudut);
+              float b=b_tengah+radius*sin (sudut);
+              glVertex2f(a/80,b/90);
        }
     glEnd();
 
@@ -246,15 +248,15 @@ void domba(void)
     glColor3f(1,1,1);//untuk warna domba
        radius = 35;
        jumlah_titik = 60;
-       x_tengah = 970;
-       y_tengah = 2260;
+       a_tengah = 970;
+       b_tengah = 2260;
 
        for (i=0;i<=360;i++)
        {
               float sudut=i*(2*PI/jumlah_titik);
-              float x=x_tengah+radius*cos (sudut);
-              float y=y_tengah+radius*sin (sudut);
-              glVertex2f(x/100,y/100);
+              float a=a_tengah+radius*cos (sudut);
+              float b=b_tengah+radius*sin (sudut);
+              glVertex2f(a/100,b/100);
        }
     glEnd();
 
@@ -262,15 +264,15 @@ void domba(void)
     glColor3f(0,0,0);//untuk warna domba
        radius = 20;
        jumlah_titik = 60;
-       x_tengah = 970;
-       y_tengah = 2260;
+       a_tengah = 970;
+       b_tengah = 2260;
 
        for (i=0;i<=360;i++)
        {
               float sudut=i*(2*PI/jumlah_titik);
-              float x=x_tengah+radius*cos (sudut);
-              float y=y_tengah+radius*sin (sudut);
-              glVertex2f(x/100,y/100);
+              float a=a_tengah+radius*cos (sudut);
+              float b=b_tengah+radius*sin (sudut);
+              glVertex2f(a/100,b/100);
        }
     glEnd();
 
@@ -278,15 +280,15 @@ void domba(void)
     glColor3f(1,1,1);//untuk warna domba
        radius = 35;
        jumlah_titik = 60;
-       x_tengah = 1100;
-       y_tengah = 2260;
+       a_tengah = 1100;
+       b_tengah = 2260;
 
        for (i=0;i<=360;i++)
        {
               float sudut=i*(2*PI/jumlah_titik);
-              float x=x_tengah+radius*cos (sudut);
-              float y=y_tengah+radius*sin (sudut);
-              glVertex2f(x/100,y/100);
+              float a=a_tengah+radius*cos (sudut);
+              float b=b_tengah+radius*sin (sudut);
+              glVertex2f(a/100,b/100);
        }
     glEnd();
 
@@ -294,15 +296,15 @@ void domba(void)
     glColor3f(0,0,0);//untuk warna domba
        radius = 20;
        jumlah_titik = 60;
-       x_tengah = 1100;
-       y_tengah = 2260;
+       a_tengah = 1100;
+       b_tengah = 2260;
 
        for (i=0;i<=360;i++)
        {
               float sudut=i*(2*PI/jumlah_titik);
-              float x=x_tengah+radius*cos (sudut);
-              float y=y_tengah+radius*sin (sudut);
-              glVertex2f(x/100,y/100);
+              float a=a_tengah+radius*cos (sudut);
+              float b=b_tengah+radius*sin (sudut);
+              glVertex2f(a/100,b/100);
        }
     glEnd();
 
@@ -310,15 +312,15 @@ void domba(void)
     glColor3f(1,1,1);
        radius = 50;
        jumlah_titik = 60;
-       x_tengah = 1500;
-       y_tengah = 2600;
+       a_tengah = 1500;
+       b_tengah = 2600;
 
        for (i=0;i<=360;i++)
        {
               float sudut=i*(2*PI/jumlah_titik);
-              float x=x_tengah+radius*cos (sudut);
-              float y=y_tengah+radius*sin (sudut);
-              glVertex2f(x/70,y/120);
+              float a=a_tengah+radius*cos (sudut);
+              float b=b_tengah+radius*sin (sudut);
+              glVertex2f(a/70,b/120);
        }
     glEnd();
 
@@ -326,15 +328,15 @@ void domba(void)
     glColor3f(0,0,0);
        radius = 40;
        jumlah_titik = 60;
-       x_tengah = 640;
-       y_tengah = 2330;
+       a_tengah = 640;
+       b_tengah = 2330;
 
        for (i=0;i<=360;i++)
        {
               float sudut=i*(2*PI/jumlah_titik);
-              float x=x_tengah+radius*cos (sudut);
-              float y=y_tengah+radius*sin (sudut);
-              glVertex2f(x/50,y/100);
+              float a=a_tengah+radius*cos (sudut);
+              float b=b_tengah+radius*sin (sudut);
+              glVertex2f(a/50,b/100);
        }
     glEnd();
 
@@ -342,15 +344,15 @@ void domba(void)
     glColor3f(0,0,0);
        radius = 40;
        jumlah_titik = 60;
-       x_tengah = 420;
-       y_tengah = 2330;
+       a_tengah = 420;
+       b_tengah = 2330;
 
        for (i=0;i<=360;i++)
        {
               float sudut=i*(2*PI/jumlah_titik);
-              float x=x_tengah+radius*cos (sudut);
-              float y=y_tengah+radius*sin (sudut);
-              glVertex2f(x/50,y/100);
+              float a=a_tengah+radius*cos (sudut);
+              float b=b_tengah+radius*sin (sudut);
+              glVertex2f(a/50,b/100);
        }
     glEnd();
 }
@@ -703,17 +705,36 @@ void tombol(void)
     glEnd();
 
 }
+void mouse(int button, int state, int xmouse, int ymouse){
+      if(button==GLUT_LEFT_BUTTON && state==GLUT_DOWN){
+            x = -50;
+            y = -1;
+      }
+}
+
 void utama()
 {
+
     glClear(GL_COLOR_BUFFER_BIT);
     latar();
     domba();
+
+    glPushMatrix();
+    glTranslatef(x,y,z);
     rumput();
+    glPopMatrix();
+    glFlush();
+
     serigala();
     petani();
     tombol();
     glutSwapBuffers();
 }
+void timer(int value){
+    glutPostRedisplay();
+    glutTimerFunc(50,timer,0);
+}
+
 int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
@@ -724,6 +745,8 @@ int main(int argc, char** argv)
 	glutDisplayFunc(utama); //memanggil display
 	glClearColor(0,0,1,1);
 	gluOrtho2D(-10, 100, 0, 50); //mengatur proyeksi hasil eksekusi
+	glutMouseFunc(mouse);
+	glutTimerFunc(1,timer,0);
 	glutMainLoop();
 	return 0;
 }
