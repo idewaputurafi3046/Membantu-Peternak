@@ -7,6 +7,8 @@
 const double PI = 3.142857143;
 int i,radius,jumlah_titik,a_tengah,b_tengah;
 float x,y,z;
+int gerak = 0;
+bool atas = true;
 void latar(void) //yang akan ditampilkan
 {
 
@@ -670,6 +672,53 @@ void petani(void)
     glVertex2f(56,34);
     glEnd();
 }
+
+void awan1 (void)
+{
+    glBegin(GL_POLYGON);
+    glColor3f(0.5,0.5,0.5);//untuk warna lingkaran
+    radius = 90;
+    jumlah_titik = 60;
+    a_tengah = 200;
+    b_tengah = 4500;
+    for (i=0;i<=360;i++)
+    {
+       float sudut=i*(2*PI/jumlah_titik);
+       float a=a_tengah+radius*cos (sudut);
+       float b=b_tengah+radius*sin (sudut);
+       glVertex2f(a/10,b/105);
+    }
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3f(0.5,0.5,0.5);//untuk warna lingkaran
+    radius = 190;
+    jumlah_titik = 60;
+    a_tengah = 1500;
+    b_tengah = 4000;
+    for (i=0;i<=360;i++)
+    {
+       float sudut=i*(2*PI/jumlah_titik);
+       float a=a_tengah+radius*cos (sudut);
+       float b=b_tengah+radius*sin (sudut);
+       glVertex2f(a/80,b/90);
+    }
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3f(0.5,0.5,0.5);//untuk warna lingkaran
+    radius = 190;
+    jumlah_titik = 60;
+    a_tengah = 1700;
+    b_tengah = 4000;
+    for (i=0;i<=360;i++)
+    {
+       float sudut=i*(2*PI/jumlah_titik);
+       float a=a_tengah+radius*cos (sudut);
+       float b=b_tengah+radius*sin (sudut);
+       glVertex2f(a/80,b/90);
+    }
+    glEnd();
+}
 void tombol(void)
 {
     glBegin(GL_QUADS);
@@ -705,7 +754,10 @@ void tombol(void)
     glEnd();
 
 }
-void mouse(int button, int state, int xmouse, int ymouse){
+
+
+void mouse(int button, int state, int xmouse, int ymouse)
+{
       if(button==GLUT_LEFT_BUTTON && state==GLUT_DOWN){
             x = -50;
             y = -1;
@@ -727,10 +779,35 @@ void utama()
 
     serigala();
     petani();
+
+    glPushMatrix();
+    glTranslatef( gerak, 0,0);
+    awan1();
+    glFlush();
+    glPopMatrix();
+
     tombol();
     glutSwapBuffers();
 }
-void timer(int value){
+
+/*void timer_awan1(int value)
+{
+    if (atas){
+        gerak += 1;
+    } else {
+        gerak -= 1;
+    }
+    if (gerak > 70) {
+        atas = false;
+    } else if(gerak < -20){
+        atas = true;
+    }
+ glutPostRedisplay();
+
+ glutTimerFunc(50,timer_awan1,0);
+}*/
+void timer(int value)
+{
     glutPostRedisplay();
     glutTimerFunc(50,timer,0);
 }
@@ -747,6 +824,7 @@ int main(int argc, char** argv)
 	gluOrtho2D(-10, 100, 0, 50); //mengatur proyeksi hasil eksekusi
 	glutMouseFunc(mouse);
 	glutTimerFunc(1,timer,0);
+//	glutTimerFunc(1,timer_awan1,0);
 	glutMainLoop();
 	return 0;
 }
