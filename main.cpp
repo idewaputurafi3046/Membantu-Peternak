@@ -5,20 +5,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 const double PI = 3.142857143;
-int i,radius,jumlah_titik,a_tengah,b_tengah;
+int i,radius,jumlah_titik,a_tengah,b_tengah, gerak1, gerak2, c,c1,c2,d,d1,d2,o,o1,o2;
 float x,y,z;
-int gerak = 0;
-bool atas = true;
+bool atas1 = true, atas2 = true, statusRumput, statusDomba, statusSerigala;
 void latar(void) //yang akan ditampilkan
 {
 
     glBegin(GL_POLYGON); //tanah kiri 1
     glColor3f(1, 1, 0);
-    glVertex2f(-10,0);
+    glVertex2f(-20,0);
     glVertex2f(8,0);
     glVertex2f(8,18);
     glVertex2f(4,22);
-    glVertex2f(-10,22);
+    glVertex2f(-20,22);
     glEnd();
 
     glBegin(GL_POLYGON); //tanah kiri 2
@@ -50,8 +49,8 @@ void latar(void) //yang akan ditampilkan
     glBegin(GL_POLYGON); //tanah kanan 1
     glColor3f(1, 1, 0);
     glVertex2f(78,0);
-    glVertex2f(100,0);
-    glVertex2f(100,22);
+    glVertex2f(110,0);
+    glVertex2f(110,22);
     glVertex2f(82,22);
     glVertex2f(78,18);
     glEnd();
@@ -184,43 +183,42 @@ void domba(void)
 {
     glBegin(GL_QUADS); //kaki domba
     glColor3f(0, 0, 0);
-    glVertex2f(19,18);
-    glVertex2f(18.5,18);
-    glVertex2f(18.5,20);
-    glVertex2f(19,20);
+    glVertex2f(89,22);
+    glVertex2f(90,22);
+    glVertex2f(90,24);
+    glVertex2f(89,24);
     glEnd();
 
     glBegin(GL_QUADS); //kaki domba
     glColor3f(0, 0, 0);
-    glVertex2f(18.2,18);
-    glVertex2f(17.7,18);
-    glVertex2f(17.7,20);
-    glVertex2f(18.2,20);
+    glVertex2f(87,22);
+    glVertex2f(88,22);
+    glVertex2f(88,24);
+    glVertex2f(87,24);
     glEnd();
 
     glBegin(GL_QUADS); //kaki domba
     glColor3f(0, 0, 0);
-    glVertex2f(15,18);
-    glVertex2f(15.5,18);
-    glVertex2f(15.5,20);
-    glVertex2f(15,20);
+    glVertex2f(84,22);
+    glVertex2f(85,22);
+    glVertex2f(85,24);
+    glVertex2f(84,24);
     glEnd();
 
     glBegin(GL_QUADS); //kaki domba
     glColor3f(0, 0, 0);
-    glVertex2f(14.7,18);
-    glVertex2f(14.2,18);
-    glVertex2f(14.2,20);
-    glVertex2f(14.7,20);
+    glVertex2f(82.7,22);
+    glVertex2f(83.7,22);
+    glVertex2f(83.7,24);
+    glVertex2f(82.7,24);
     glEnd();
 
     glBegin(GL_POLYGON); //domba
     glColor3f(1,1,1);//untuk warna domba
        radius = 250;
        jumlah_titik = 60;
-       a_tengah = 800;
-       b_tengah = 2200;
-
+       a_tengah = 4300;
+       b_tengah = 2550;
        for (i=0;i<=360;i++)
        {
               float sudut=i*(2*PI/jumlah_titik);
@@ -234,8 +232,8 @@ void domba(void)
     glColor3f(0,0,0);
        radius = 140;
        jumlah_titik = 60;
-       a_tengah = 850;
-       b_tengah = 2000;
+       a_tengah = 6400;
+       b_tengah = 2300;
 
        for (i=0;i<=360;i++)
        {
@@ -250,8 +248,8 @@ void domba(void)
     glColor3f(1,1,1);//untuk warna domba
        radius = 35;
        jumlah_titik = 60;
-       a_tengah = 970;
-       b_tengah = 2260;
+       a_tengah = 7870;
+       b_tengah = 2560;
 
        for (i=0;i<=360;i++)
        {
@@ -266,8 +264,8 @@ void domba(void)
     glColor3f(0,0,0);//untuk warna domba
        radius = 20;
        jumlah_titik = 60;
-       a_tengah = 970;
-       b_tengah = 2260;
+       a_tengah = 7870;
+       b_tengah = 2560;
 
        for (i=0;i<=360;i++)
        {
@@ -282,8 +280,8 @@ void domba(void)
     glColor3f(1,1,1);//untuk warna domba
        radius = 35;
        jumlah_titik = 60;
-       a_tengah = 1100;
-       b_tengah = 2260;
+       a_tengah = 8000;
+       b_tengah = 2560;
 
        for (i=0;i<=360;i++)
        {
@@ -298,8 +296,8 @@ void domba(void)
     glColor3f(0,0,0);//untuk warna domba
        radius = 20;
        jumlah_titik = 60;
-       a_tengah = 1100;
-       b_tengah = 2260;
+       a_tengah = 8000;
+       b_tengah = 2560;
 
        for (i=0;i<=360;i++)
        {
@@ -310,28 +308,12 @@ void domba(void)
        }
     glEnd();
 
-    glBegin(GL_POLYGON); //ekor
-    glColor3f(1,1,1);
-       radius = 50;
-       jumlah_titik = 60;
-       a_tengah = 1500;
-       b_tengah = 2600;
-
-       for (i=0;i<=360;i++)
-       {
-              float sudut=i*(2*PI/jumlah_titik);
-              float a=a_tengah+radius*cos (sudut);
-              float b=b_tengah+radius*sin (sudut);
-              glVertex2f(a/70,b/120);
-       }
-    glEnd();
-
     glBegin(GL_POLYGON); //telinga
     glColor3f(0,0,0);
        radius = 40;
        jumlah_titik = 60;
-       a_tengah = 640;
-       b_tengah = 2330;
+       a_tengah = 4100;
+       b_tengah = 2650;
 
        for (i=0;i<=360;i++)
        {
@@ -346,8 +328,8 @@ void domba(void)
     glColor3f(0,0,0);
        radius = 40;
        jumlah_titik = 60;
-       a_tengah = 420;
-       b_tengah = 2330;
+       a_tengah = 3900;
+       b_tengah = 2650;
 
        for (i=0;i<=360;i++)
        {
@@ -360,42 +342,42 @@ void domba(void)
 }
 void rumput(void)
 {
-    glBegin(GL_POLYGON); //rumput
-    glColor3f(0,1,0);//untuk warna rumput
-    glVertex2f(92,24);
-    glVertex2f(96,24);
-    glVertex2f(96,26);
-    glVertex2f(92,26);
-    glEnd();
+        glBegin(GL_POLYGON); //rumput
+        glColor3f(0,1,0);//untuk warna rumput
+        glVertex2f(92,24);
+        glVertex2f(96,24);
+        glVertex2f(96,26);
+        glVertex2f(92,26);
+        glEnd();
 
-    glBegin(GL_LINES); //tali rumput
-    glColor3f(1,1,1);//untuk warna tali rumput
-    glVertex2f(93,24);
-    glVertex2f(93,26);
+        glBegin(GL_LINES); //tali rumput
+        glColor3f(1,1,1);//untuk warna tali rumput
+        glVertex2f(93,24);
+        glVertex2f(93,26);
 
-    glVertex2f(94,24);
-    glVertex2f(94,26);
+        glVertex2f(94,24);
+        glVertex2f(94,26);
 
-    glVertex2f(95,24);
-    glVertex2f(95,26);
+        glVertex2f(95,24);
+        glVertex2f(95,26);
 
-    glVertex2f(92,25);
-    glVertex2f(96,25);
-    glEnd();
+        glVertex2f(92,25);
+        glVertex2f(96,25);
+        glEnd();
 
-    glBegin(GL_QUADS); //kotak
-    glColor3f(0.5,0,0);//untuk warna kotak
-    glVertex2f(91.5,22);
-    glVertex2f(96.5,22);
-    glVertex2f(96.5,24.5);
-    glVertex2f(91.5,24.5);
+        glBegin(GL_QUADS); //kotak
+        glColor3f(0.5,0,0);//untuk warna kotak
+        glVertex2f(91.5,22);
+        glVertex2f(96.5,22);
+        glVertex2f(96.5,24.5);
+        glVertex2f(91.5,24.5);
 
-    glColor3f(0.5,0.5,0.5);//untuk warna kotak
-    glVertex2f(91.5,23.5);
-    glVertex2f(96.5,23.5);
-    glVertex2f(96.5,24);
-    glVertex2f(91.5,24);
-    glEnd();
+        glColor3f(0.5,0.5,0.5);//untuk warna kotak
+        glVertex2f(91.5,23.5);
+        glVertex2f(96.5,23.5);
+        glVertex2f(96.5,24);
+        glVertex2f(91.5,24);
+        glEnd();
 }
 void serigala(void)
 {
@@ -672,7 +654,6 @@ void petani(void)
     glVertex2f(56,34);
     glEnd();
 }
-
 void awan1 (void)
 {
     glBegin(GL_POLYGON);
@@ -719,49 +700,67 @@ void awan1 (void)
     }
     glEnd();
 }
-void tombol(void)
+void awan2 (void)
 {
-    glBegin(GL_QUADS);
-    glColor3f(0, 0, 0);
-    glVertex2f(22,2);
-    glVertex2f(64,2);
-    glVertex2f(64,8);
-    glVertex2f(22,8);
-
-    glColor3f(0.5, 0, 0);
-    glVertex2f(23,3);
-    glVertex2f(33,3);
-    glVertex2f(33,7);
-    glVertex2f(23,7);
-
-    glColor3f(1, 1, 1);
-    glVertex2f(35,3);
-    glVertex2f(43,3);
-    glVertex2f(43,7);
-    glVertex2f(35,7);
-
-    glColor3f(0.5, 0.5, 0.5);
-    glVertex2f(45,3);
-    glVertex2f(53,3);
-    glVertex2f(53,7);
-    glVertex2f(45,7);
-
-    glColor3f(0, 1, 0);
-    glVertex2f(55,3);
-    glVertex2f(63,3);
-    glVertex2f(63,7);
-    glVertex2f(55,7);
+    glBegin(GL_POLYGON);
+    glColor3f(0.5,0.5,0.5);//untuk warna lingkaran
+    radius = 90;
+    jumlah_titik = 60;
+    a_tengah = 200;
+    b_tengah = 4000;
+    for (i=0;i<=360;i++)
+    {
+       float sudut=i*(2*PI/jumlah_titik);
+       float a=a_tengah+radius*cos (sudut);
+       float b=b_tengah+radius*sin (sudut);
+       glVertex2f(a/10,b/105);
+    }
     glEnd();
 
+    glBegin(GL_POLYGON);
+    glColor3f(0.5,0.5,0.5);//untuk warna lingkaran
+    radius = 190;
+    jumlah_titik = 60;
+    a_tengah = 1000;
+    b_tengah = 3600;
+    for (i=0;i<=360;i++)
+    {
+       float sudut=i*(2*PI/jumlah_titik);
+       float a=a_tengah+radius*cos (sudut);
+       float b=b_tengah+radius*sin (sudut);
+       glVertex2f(a/50,b/90);
+    }
+    glEnd();
 }
-
-
-void mouse(int button, int state, int xmouse, int ymouse)
+void myKeyboard(unsigned char key, int x, int y)
 {
-      if(button==GLUT_LEFT_BUTTON && state==GLUT_DOWN){
-            x = -50;
-            y = -1;
-      }
+
+        if(key == 'a')
+            if(o == 0){
+                statusRumput=true;
+                o+=1;
+            }else{
+                statusRumput=false;
+                o-=1;
+            }
+        if(key == 's')
+            if(o1 == 0){
+                statusDomba=true;
+                o1+=1;
+            }else{
+                statusDomba=false;
+                o1-=1;
+            }
+        if(key == 'd')
+            if(o2 == 0){
+                statusSerigala=true;
+                o2+=1;
+            }else{
+                statusSerigala=false;
+                o2-=1;
+            }
+
+        if(key == 'g') c+=0; d+=-4;//seleksi tombol yang ditekan
 }
 
 void utama()
@@ -769,47 +768,102 @@ void utama()
 
     glClear(GL_COLOR_BUFFER_BIT);
     latar();
-    domba();
 
     glPushMatrix();
-    glTranslatef(x,y,z);
-    rumput();
-    glPopMatrix();
-    glFlush();
-
-    serigala();
-    petani();
-
-    glPushMatrix();
-    glTranslatef( gerak, 0,0);
+    glTranslatef( gerak1, 0,0);
     awan1();
     glFlush();
     glPopMatrix();
 
-    tombol();
+    glPushMatrix();
+    glTranslatef( gerak2, 0,0);
+    awan2();
+    glFlush();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(c,d,0);
+    rumput();
+    glPopMatrix();
+    glFlush();
+
+    glPushMatrix();
+    glTranslatef(c1,d1,0);
+    domba();
+    glPopMatrix();
+    glFlush();
+
+    glPushMatrix();
+    glTranslatef(c2,d2,0);
+    serigala();
+    glPopMatrix();
+    glFlush();
+
+    petani();
     glutSwapBuffers();
 }
-
-/*void timer_awan1(int value)
+void timer_awan1(int value)
 {
-    if (atas){
-        gerak += 1;
+    if (atas1){
+        gerak1 += 1;
     } else {
-        gerak -= 1;
+        gerak1 -= 1;
     }
-    if (gerak > 70) {
-        atas = false;
-    } else if(gerak < -20){
-        atas = true;
+    if (gerak1 > 70) {
+        atas1 = false;
+    } else if(gerak1 < -20){
+        atas1 = true;
     }
  glutPostRedisplay();
 
  glutTimerFunc(50,timer_awan1,0);
-}*/
-void timer(int value)
+}
+void timer_awan2(int value)
 {
+    if (atas2){
+        gerak2 -= 1;
+    } else {
+        gerak2 += 1;
+    }
+    if (gerak2 < -20) {
+        atas2 = false;
+    } else if(gerak2 > 70){
+        atas2 = true;
+    }
+ glutPostRedisplay();
+
+ glutTimerFunc(50,timer_awan2,0);
+}
+
+void timerRumput(int value)
+{
+    if (statusRumput){
+        c = -45; d = -1;
+    } else {
+        c = 0; d = 0;
+    }
     glutPostRedisplay();
-    glutTimerFunc(50,timer,0);
+    glutTimerFunc(50,timerRumput,0);
+}
+void timerDomba(int value)
+{
+    if (statusDomba){
+        c1 = -45; d1 = -1;
+    } else {
+        c1 = 0; d1 = 0;
+    }
+    glutPostRedisplay();
+    glutTimerFunc(50,timerDomba,0);
+}
+void timerSerigala(int value)
+{
+    if (statusSerigala){
+        c2 = -45; d2 = -1;
+    } else {
+        c2 = 0; d2 = 0;
+    }
+    glutPostRedisplay();
+    glutTimerFunc(50,timerSerigala,0);
 }
 
 int main(int argc, char** argv)
@@ -821,10 +875,13 @@ int main(int argc, char** argv)
 	glutCreateWindow("Tugas"); //membuat window
 	glutDisplayFunc(utama); //memanggil display
 	glClearColor(0,0,1,1);
-	gluOrtho2D(-10, 100, 0, 50); //mengatur proyeksi hasil eksekusi
-	glutMouseFunc(mouse);
-	glutTimerFunc(1,timer,0);
-//	glutTimerFunc(1,timer_awan1,0);
+	gluOrtho2D(-20, 110, 0, 50); //mengatur proyeksi hasil eksekusi
+	glutTimerFunc(1,timerRumput,0);
+	glutTimerFunc(1,timerDomba,0);
+	glutTimerFunc(1,timerSerigala,0);
+    glutTimerFunc(1,timer_awan1,0);
+    glutTimerFunc(1,timer_awan2,0);
+    glutKeyboardFunc(myKeyboard);
 	glutMainLoop();
 	return 0;
 }
