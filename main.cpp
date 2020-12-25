@@ -734,33 +734,105 @@ void awan2 (void)
 }
 void myKeyboard(unsigned char key, int x, int y)
 {
-
         if(key == 'a')
             if(o == 0){
-                statusRumput=true;
+                statusRumput=1;
                 o+=1;
+            }else if(statusRumput==2){
+                cout<<"Mohon maaf Runput sudah berada di tujuan"<<endl;
             }else{
-                statusRumput=false;
+                statusRumput=0;
                 o-=1;
             }
         if(key == 's')
             if(o1 == 0){
-                statusDomba=true;
+                statusDomba=1;
                 o1+=1;
+            }else if(statusDomba==2){
+                cout<<"Mohon maaf Domba sudah berada di tujuan"<<endl;
             }else{
-                statusDomba=false;
+                statusDomba=0;
                 o1-=1;
             }
         if(key == 'd')
             if(o2 == 0){
-                statusSerigala=true;
+                statusSerigala=1;
                 o2+=1;
+            }else if(statusSerigala==2){
+                cout<<"Mohon maaf Serigala sudah berada di tujuan"<<endl;
             }else{
-                statusSerigala=false;
+                statusSerigala=0;
                 o2-=1;
             }
-
-        if(key == 'g') c+=0; d+=-4;//seleksi tombol yang ditekan
+        if(key == 'g')
+            if (statusRumput==1&&statusDomba==1&&statusSerigala==1){
+                o=o1=o2=0; c=c1=c2 = 0; d=d1=d2 = 0;
+                statusDomba=statusRumput=statusSerigala=0;
+                cout<<"Mohon maaf hanya bisa membawa 1 barang"<<endl;
+            }else if(statusRumput==1&&statusDomba==1){
+                o=o1=0; c=c1= 0; d=d1= 0;
+                statusDomba=statusRumput=0;
+                cout<<"Mohon maaf hanya bisa membawa 1 barang"<<endl;
+            }else if(statusSerigala==1&&statusDomba==1){
+                o2=o1=0; c2=c1= 0; d2=d1= 0;
+                statusDomba=statusSerigala=0;
+                cout<<"Mohon maaf hanya bisa membawa 1 barang"<<endl;
+            }else if(statusRumput==1&&statusSerigala==1){
+                o=o2=0; c=c2= 0; d=d2= 0;
+                statusSerigala=statusRumput=0;
+                cout<<"Mohon maaf hanya bisa membawa 1 barang"<<endl;
+            }else if(o3 == 0 && statusRumput == 1){
+                if(o3 == 0 && statusRumput == 1&&statusDomba==0&&statusSerigala==2){
+                    statusPetani=1;
+                    statusRumput=2;
+                    o3 = 1;
+                }else if(o3 == 0 && statusRumput == 1&&statusDomba==0){
+                    o=0; c= 0; d= 0;
+                    statusRumput=0;
+                    cout<<"Mohon maaf tidak bisa mengabaikan Domba bersama Serigala "<<endl;
+                }else{
+                    statusPetani=1;
+                    statusRumput=2;
+                    o3 = 1;
+                }
+            }else if(o3 == 0 && statusSerigala == 1){
+                if(o3 == 0 && statusSerigala == 1&&statusDomba==0&&statusRumput==2){
+                    statusPetani=1;
+                    statusSerigala=2;
+                    o3 = 1;
+                }else if(o3 == 0 && statusSerigala == 1&&statusDomba==0){
+                    o2=0; c2= 0; d2= 0;
+                    statusSerigala=0;
+                    cout<<"Mohon maaf tidak bisa mengabaikan Domba bersama Rumput "<<endl;
+                }else{
+                    statusPetani=1;
+                    statusSerigala=2;
+                    o3 = 1;
+                }
+            }else if(o3 == 0 && statusDomba == 1){
+                statusPetani=1;
+                statusDomba=2;
+                o3 = 1;
+            }else if(o3 == 1){
+                if(o3 == 1&&statusRumput==2&&statusDomba==0&&statusSerigala==2){
+                    statusPetani=0;
+                    o3 = 0;
+                }else if(o3 == 1&&statusRumput==2&&statusDomba==2&&statusSerigala==0){
+                    statusPetani=statusRumput=0;
+                    o=o3 = 0; c= 0; d= 0;
+                    cout<<"Mohon maaf tidak bisa mengabaikan Domba bersama Rumput "<<endl;
+                }else if(o3 == 1&&statusRumput==0&&statusDomba==2&&statusSerigala==2){
+                    statusPetani=statusDomba=0;
+                    o1=o3 = 0; c1= 0; d1= 0;
+                    cout<<"Mohon maaf tidak bisa mengabaikan Domba bersama Serigala "<<endl;
+                }else{
+                    statusPetani=0;
+                    o3 = 0;
+                }
+            }else{
+                statusPetani=0;
+                o3 = 0;
+            }
 }
 
 void utama()
