@@ -3,11 +3,13 @@
 #include <GL/glut.h> //Import library yang akan digunakan
 #include <math.h> //import rumus matematika
 #include <stdio.h>
+#include <iostream>
 #include <stdlib.h>
+using namespace std;
 const double PI = 3.142857143;
-int i,radius,jumlah_titik,a_tengah,b_tengah, gerak1, gerak2, c,c1,c2,d,d1,d2,o,o1,o2;
+int i,radius,jumlah_titik,a_tengah,b_tengah, gerak1, gerak2, c,c1,c2,c3,d,d1,d2,d3,o,o1,o2,o3, statusReset, statusRumput,statusDomba, statusSerigala, statusPetani;
 float x,y,z;
-bool atas1 = true, atas2 = true, statusRumput, statusDomba, statusSerigala;
+bool atas1 = true, atas2 = true;
 void latar(void) //yang akan ditampilkan
 {
 
@@ -594,7 +596,7 @@ void petani(void)
     glVertex2f(51,29.5);
     glEnd();
 
-    glBegin(GL_POLYGON); // Kerah
+    glBegin(GL_POLYGON); // Kera
     glColor3f(0,0,0);
     glVertex2f(59,32);
     glVertex2f(59,33);
@@ -734,7 +736,7 @@ void awan2 (void)
 }
 void myKeyboard(unsigned char key, int x, int y)
 {
-        if(key == 'a')
+        if(key == 'a'|| key == 'A')
             if(o == 0){
                 statusRumput=1;
                 o+=1;
@@ -744,7 +746,7 @@ void myKeyboard(unsigned char key, int x, int y)
                 statusRumput=0;
                 o-=1;
             }
-        if(key == 's')
+        if(key == 's'|| key == 'S')
             if(o1 == 0){
                 statusDomba=1;
                 o1+=1;
@@ -754,7 +756,7 @@ void myKeyboard(unsigned char key, int x, int y)
                 statusDomba=0;
                 o1-=1;
             }
-        if(key == 'd')
+        if(key == 'd'|| key == 'D')
             if(o2 == 0){
                 statusSerigala=1;
                 o2+=1;
@@ -764,7 +766,7 @@ void myKeyboard(unsigned char key, int x, int y)
                 statusSerigala=0;
                 o2-=1;
             }
-        if(key == 'g')
+        if(key == 'g'|| key == 'G')
             if (statusRumput==1&&statusDomba==1&&statusSerigala==1){
                 o=o1=o2=0; c=c1=c2 = 0; d=d1=d2 = 0;
                 statusDomba=statusRumput=statusSerigala=0;
@@ -833,8 +835,17 @@ void myKeyboard(unsigned char key, int x, int y)
                 statusPetani=0;
                 o3 = 0;
             }
-}
+        if(key == 'r'|| key == 'R')
+            if(statusDomba==2&&statusRumput==2&&statusSerigala==2){
+                statusDomba=statusRumput=statusSerigala=statusPetani=0;
+                o=o1=o2=o3=0;
+                statusReset=1;
+                cout<<"Reset berhasil!"<<endl;
+            }else{
+                cout<<"Mohon maaf tidak bisa melakukan reset"<<endl;
 
+            }
+}
 void utama()
 {
 
@@ -871,7 +882,12 @@ void utama()
     glPopMatrix();
     glFlush();
 
+    glPushMatrix();
+    glTranslatef(c3,d3,0);
     petani();
+    glPopMatrix();
+    glFlush();
+
     glutSwapBuffers();
 }
 void timer_awan1(int value)
@@ -881,9 +897,9 @@ void timer_awan1(int value)
     } else {
         gerak1 -= 1;
     }
-    if (gerak1 > 70) {
+    if (gerak1 > 80) {
         atas1 = false;
-    } else if(gerak1 < -20){
+    } else if(gerak1 < -30){
         atas1 = true;
     }
  glutPostRedisplay();
@@ -906,33 +922,38 @@ void timer_awan2(int value)
 
  glutTimerFunc(50,timer_awan2,0);
 }
-
 void timerRumput(int value)
 {
-    if (statusRumput){
+    if (statusRumput==1){
         c = -45; d = -1;
-    } else {
+    } else if(statusRumput==0){
         c = 0; d = 0;
+    } else{
+        c = -110; d = 0;
     }
     glutPostRedisplay();
     glutTimerFunc(50,timerRumput,0);
 }
 void timerDomba(int value)
 {
-    if (statusDomba){
-        c1 = -45; d1 = -1;
-    } else {
+    if (statusDomba==1){
+        c1 = -37; d1 = -1;
+    } else if(statusDomba==0){
         c1 = 0; d1 = 0;
+    } else{
+        c1 = -72; d1 = -4;
     }
     glutPostRedisplay();
     glutTimerFunc(50,timerDomba,0);
 }
 void timerSerigala(int value)
 {
-    if (statusSerigala){
-        c2 = -45; d2 = -1;
-    } else {
+    if (statusSerigala==1){
+        c2 = -25; d2 = 3;
+    } else if(statusSerigala==0){
         c2 = 0; d2 = 0;
+    } else{
+        c2 = -78; d2 = 4;
     }
     glutPostRedisplay();
     glutTimerFunc(50,timerSerigala,0);
@@ -954,13 +975,22 @@ void timerPetani(int value)
     glutPostRedisplay();
     glutTimerFunc(50,timerPetani,0);
 }
-
+void timerReset(int value)
+{
+    if (statusReset==1){
+        c=c1=c2=c3=0; d=d1=d2=d3=0;
+        statusReset=0;
+    }
+    glutPostRedisplay();
+    glutTimerFunc(50,timerReset,0);
+}
 int main(int argc, char** argv)
 {
+    cout<<"Untuk Keyboard yang di gunakan:"<<endl<<"a/A = Rumput,"<<endl<<"s/S = Domba,"<<endl<<"d/D = Serigala,"<<endl<<"g/G = Petani"<<endl;
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE); //atur display
 	glutInitWindowSize(1000, 700); //ukurann display
-	glutInitWindowPosition(180,0); //posisi display
+	glutInitWindowPosition(300,0); //posisi display
 	glutCreateWindow("Tugas"); //membuat window
 	glutDisplayFunc(utama); //memanggil display
 	glClearColor(0,0,1,1);
@@ -968,9 +998,11 @@ int main(int argc, char** argv)
 	glutTimerFunc(1,timerRumput,0);
 	glutTimerFunc(1,timerDomba,0);
 	glutTimerFunc(1,timerSerigala,0);
-	glutTimerFunc(1,timer_awan1,0);
-	glutTimerFunc(1,timer_awan2,0);
-	glutKeyboardFunc(myKeyboard);
+	glutTimerFunc(1,timerPetani,0);
+	glutTimerFunc(1,timerReset,0);
+    glutTimerFunc(1,timer_awan1,0);
+    glutTimerFunc(1,timer_awan2,0);
+    glutKeyboardFunc(myKeyboard);
 	glutMainLoop();
 	return 0;
 }
