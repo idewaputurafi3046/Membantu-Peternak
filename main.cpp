@@ -937,6 +937,23 @@ void timerSerigala(int value)
     glutPostRedisplay();
     glutTimerFunc(50,timerSerigala,0);
 }
+void timerPetani(int value)
+{
+    if (statusPetani==1 && statusRumput==2){
+        c3 = -30; d3 = 0;
+        c = -110; d = 0;
+    }else if (statusPetani==1 && statusDomba==2){
+        c3 = -30; d3 = 0;
+        c1 = -72; d1 = -4;
+    }else if (statusPetani==1 && statusSerigala==2){
+        c3 = -30; d3 = 0;
+        c2 = -78; d2 = 4;
+    } else {
+        c3 = 0; d3 = 0;
+    }
+    glutPostRedisplay();
+    glutTimerFunc(50,timerPetani,0);
+}
 
 int main(int argc, char** argv)
 {
