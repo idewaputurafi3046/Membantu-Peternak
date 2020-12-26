@@ -594,7 +594,7 @@ void petani(void)
     glVertex2f(51,29.5);
     glEnd();
 
-    glBegin(GL_POLYGON); // Kera
+    glBegin(GL_POLYGON); // Kerah
     glColor3f(0,0,0);
     glVertex2f(59,32);
     glVertex2f(59,33);
