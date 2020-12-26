@@ -968,9 +968,9 @@ int main(int argc, char** argv)
 	glutTimerFunc(1,timerRumput,0);
 	glutTimerFunc(1,timerDomba,0);
 	glutTimerFunc(1,timerSerigala,0);
-    glutTimerFunc(1,timer_awan1,0);
-    glutTimerFunc(1,timer_awan2,0);
-    glutKeyboardFunc(myKeyboard);
+	glutTimerFunc(1,timer_awan1,0);
+	glutTimerFunc(1,timer_awan2,0);
+	glutKeyboardFunc(myKeyboard);
 	glutMainLoop();
 	return 0;
 }
