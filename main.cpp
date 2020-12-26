@@ -596,7 +596,7 @@ void petani(void)
     glVertex2f(51,29.5);
     glEnd();
 
-    glBegin(GL_POLYGON); // Kera
+    glBegin(GL_POLYGON); // Kerah
     glColor3f(0,0,0);
     glVertex2f(59,32);
     glVertex2f(59,33);
@@ -986,11 +986,11 @@ void timerReset(int value)
 }
 int main(int argc, char** argv)
 {
-    cout<<"Untuk Keyboard yang di gunakan:"<<endl<<"a/A = Rumput,"<<endl<<"s/S = Domba,"<<endl<<"d/D = Serigala,"<<endl<<"g/G = Petani"<<endl;
+    cout<<"Untuk Keyboard yang di gunakan:"<<endl<<"a/A = Rumput,"<<endl<<"s/S = Domba,"<<endl<<"d/D = Serigala,"<<endl<<"g/G = Petani"<<endl<<"r/R = Reset"<<endl;
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE); //atur display
 	glutInitWindowSize(1000, 700); //ukurann display
-	glutInitWindowPosition(300,0); //posisi display
+	glutInitWindowPosition(180,0); //posisi display
 	glutCreateWindow("Tugas"); //membuat window
 	glutDisplayFunc(utama); //memanggil display
 	glClearColor(0,0,1,1);
