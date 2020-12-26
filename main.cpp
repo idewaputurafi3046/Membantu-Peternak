@@ -990,7 +990,7 @@ int main(int argc, char** argv)
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE); //atur display
 	glutInitWindowSize(1000, 700); //ukurann display
-	glutInitWindowPosition(180,0); //posisi display
+	glutInitWindowPosition(370,0); //posisi display
 	glutCreateWindow("Tugas"); //membuat window
 	glutDisplayFunc(utama); //memanggil display
 	glClearColor(0,0,1,1);
@@ -1000,9 +1000,9 @@ int main(int argc, char** argv)
 	glutTimerFunc(1,timerSerigala,0);
 	glutTimerFunc(1,timerPetani,0);
 	glutTimerFunc(1,timerReset,0);
-    glutTimerFunc(1,timer_awan1,0);
-    glutTimerFunc(1,timer_awan2,0);
-    glutKeyboardFunc(myKeyboard);
+   	glutTimerFunc(1,timer_awan1,0);
+    	glutTimerFunc(1,timer_awan2,0);
+    	glutKeyboardFunc(myKeyboard);
 	glutMainLoop();
 	return 0;
 }
